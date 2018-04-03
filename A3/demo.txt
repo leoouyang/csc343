@@ -1,0 +1,162 @@
+ \i runner.txt
+-- Loading schema and data:
+psql:schema.sql:3: NOTICE:  drop cascades to 27 other objects
+DETAIL:  drop cascades to table student
+drop cascades to table room
+drop cascades to table course
+drop cascades to table enrol
+drop cascades to type question_type
+drop cascades to table question
+drop cascades to table multioptions
+drop cascades to table multianswer
+drop cascades to table tfanswer
+drop cascades to table numanswer
+drop cascades to table multihint
+drop cascades to table numhint
+drop cascades to table quiz
+drop cascades to table quizquestion
+drop cascades to table response
+drop cascades to view questionwithhint
+drop cascades to view finalresult
+drop cascades to view releventresponse
+drop cascades to view higginsstudent
+drop cascades to view thisquizquestion
+drop cascades to view shouldanswer
+drop cascades to view answered
+drop cascades to view notanswered
+drop cascades to view higginsstudentnum
+drop cascades to view questionanswers
+drop cascades to view correctwrong
+drop cascades to view final_result
+DROP SCHEMA
+CREATE SCHEMA
+SET
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TYPE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+INSERT 0 6
+INSERT 0 2
+INSERT 0 2
+INSERT 0 6
+INSERT 0 5
+INSERT 0 12
+INSERT 0 3
+INSERT 0 1
+INSERT 0 1
+INSERT 0 4
+INSERT 0 3
+INSERT 0 1
+INSERT 0 4
+INSERT 0 14
+-- Query 1:
+    fullname     | studentnumber
+-----------------+---------------
+ Lena Headey     | 0998801234
+ Peter Dinklage  | 0010784522
+ Emilia Clarke   | 0997733991
+ Kit Harrington  | 5555555555
+ Sophie Turner   | 1111111111
+ Maisie Williams | 2222222222
+(6 rows)
+
+-- Query 2:
+psql:q2.sql:1: NOTICE:  view "questionhint" does not exist, skipping
+DROP VIEW
+CREATE VIEW
+psql:q2.sql:15: NOTICE:  view "finalresult" does not exist, skipping
+DROP VIEW
+CREATE VIEW
+ id  |                                                                        text                                                                        | hintnum
+-----+----------------------------------------------------------------------------------------------------------------------------------------------------+---------
+ 625 | What is the Underground Railroad?                                                                                                                  |       3
+ 601 | During the "Quiet Revolution," Quebec experienced rapid change. In what decade did this occur? (Enter the year that began the decade, e.g., 1840.) |       3
+ 782 | What do you promise when you take the oath of citizenship?                                                                                         |       1
+ 566 | The Prime Minister, Justin Trudeau, is Canada's Head of State.                                                                                     |
+ 790 | During the War of 1812 the Americans burned down the Parliament Buildings in York (now Toronto). What did the British and Canadians do in return?  |       0
+(5 rows)
+
+-- Query 3:
+psql:q3.sql:2: NOTICE:  view "higginsstudent" does not exist, skipping
+DROP VIEW
+CREATE VIEW
+psql:q3.sql:13: NOTICE:  view "releventresponse" does not exist, skipping
+DROP VIEW
+CREATE VIEW
+psql:q3.sql:24: NOTICE:  view "questionanswers" does not exist, skipping
+DROP VIEW
+CREATE VIEW
+psql:q3.sql:38: NOTICE:  view "correctresponse" does not exist, skipping
+DROP VIEW
+CREATE VIEW
+psql:q3.sql:46: NOTICE:  view "final_result" does not exist, skipping
+DROP VIEW
+CREATE VIEW
+ studentnumber |  lastname  | score
+---------------+------------+-------
+ 1111111111    | Turner     |     0
+ 5555555555    | Harrington |     1
+ 0998801234    | Headey     |     3
+ 0010784522    | Dinklage   |     8
+ 0997733991    | Clarke     |     5
+(5 rows)
+
+-- Query 4:
+psql:q4.sql:2: NOTICE:  drop cascades to view final_result
+DROP VIEW
+CREATE VIEW
+psql:q4.sql:13: NOTICE:  view "thisquizquestion" does not exist, skipping
+DROP VIEW
+CREATE VIEW
+psql:q4.sql:21: NOTICE:  view "shouldanswer" does not exist, skipping
+DROP VIEW
+CREATE VIEW
+psql:q4.sql:28: NOTICE:  view "answered" does not exist, skipping
+DROP VIEW
+CREATE VIEW
+psql:q4.sql:37: NOTICE:  view "notanswered" does not exist, skipping
+DROP VIEW
+CREATE VIEW
+psql:q4.sql:44: NOTICE:  view "final_result" does not exist, skipping
+DROP VIEW
+CREATE VIEW
+ studentnumber | questionid |                                                                    questiontext
+---------------+------------+----------------------------------------------------------------------------------------------------------------------------------------------------
+ 1111111111    |        625 | What is the Underground Railroad?
+ 1111111111    |        601 | During the "Quiet Revolution," Quebec experienced rapid change. In what decade did this occur? (Enter the year that began the decade, e.g., 1840.)
+ 1111111111    |        790 | During the War of 1812 the Americans burned down the Parliament Buildings in York (now Toronto). What did the British and Canadians do in return?
+ 1111111111    |        566 | The Prime Minister, Justin Trudeau, is Canada's Head of State.
+ 5555555555    |        625 | What is the Underground Railroad?
+ 5555555555    |        601 | During the "Quiet Revolution," Quebec experienced rapid change. In what decade did this occur? (Enter the year that began the decade, e.g., 1840.)
+(6 rows)
+
+-- Query 5:
+psql:q5.sql:2: NOTICE:  view "higginsstudentnum" does not exist, skipping
+DROP VIEW
+CREATE VIEW
+psql:q5.sql:13: NOTICE:  drop cascades to view correctresponse
+DROP VIEW
+CREATE VIEW
+psql:q5.sql:27: NOTICE:  view "correctwrong" does not exist, skipping
+DROP VIEW
+CREATE VIEW
+DROP VIEW
+CREATE VIEW
+ questionid | correct | wrong | notanswered
+------------+---------+-------+-------------
+        566 |       3 |     1 |           1
+        601 |       2 |     1 |           2
+        625 |       2 |     1 |           2
+        790 |       2 |     2 |           1
+(4 rows)
